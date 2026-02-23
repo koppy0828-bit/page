@@ -1,0 +1,47 @@
+---
+// src/components/CircleSketch.astro
+---
+<div id="circle-sketch-container"></div>
+
+<script>
+  import p5 from 'p5';
+
+  const sketch = (p) => {
+    p.setup = () => {
+      const container = document.getElementById('circle-sketch-container');
+      // 親要素の幅に合わせる設定。高さは400pxに固定していますが、自由に変えられます。
+      p.createCanvas(container.offsetWidth, 400).parent(container);
+      p.background(100);
+    };
+
+    p.draw = () => {
+      // 塗りつぶしの色を指定 (赤, 緑, 青)
+      p.fill(255, 100, 150);
+      
+      // 枠線を消す
+      p.noStroke();
+      
+      // マウスの座標に円を描く
+      // p. を頭につけるのがインスタンスモードのルールです
+      p.ellipse(p.mouseX, p.mouseY, 50, 50);
+    };
+
+    // ウィンドウサイズが変わった時にキャンバスサイズを調整する設定
+    p.windowResized = () => {
+      const container = document.getElementById('circle-sketch-container');
+      p.resizeCanvas(container.offsetWidth, 400);
+      p.background(100); // リサイズ時に背景を再描画
+    };
+  };
+
+  new p5(sketch);
+</script>
+
+<style>
+  #circle-sketch-container {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: crosshair; /* マウスを乗せた時にカーソルを十字にするバイブス */
+  }
+</style>

@@ -1,23 +1,33 @@
+---
+const { title } = Astro.props;
+import '@fontsource/roboto';
+import '@fontsource/roboto/800.css';
+---
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  :root {
+    /* TailwindのSlate-900に近い色 */
+    --color1:rgb(27, 174, 177); 
+  }
+  body {
+    margin: 0;
+    background-color: var(--color1);
+    color: #ffffff;
+    font-family: 'roboto', system-ui, sans-serif;
+  }
+
+  h1, h2, h3 {
+    font-weight: 800; /* さっき読み込んだ 800 の太さを適用 */
+    letter-spacing: 0.01em; /* 文字間隔を少し詰めるとプロっぽくなります */
+  }
 </style>
