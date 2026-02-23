@@ -1,11 +1,22 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import P5Sketch from '../components/P5Sketch.astro';
 ---
-
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Vibe Coding Blog</title>
+  </head>
+  <body>
+    <main style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+      <h1>Vibe Coding Blog</h1>
+      <p>ここにライブコーディングのパッションを綴ります。</p>
+      
+      <P5Sketch />
+      
+      <p style="margin-top: 2rem;">
+        このスケッチはAstroとp5.jsで動いています。
+        次はここにSupabaseからデータを流し込むことも可能です。
+      </p>
+    </main>
+  </body>
+</html>
